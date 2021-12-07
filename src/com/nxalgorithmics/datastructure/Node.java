@@ -45,4 +45,9 @@ public class Node implements Comparable<Node>{
     public Node getParent(){
         return this.parent;
     }
+
+
+    public String getNodeName() {
+        return this.nodeName;
+    }
 }
