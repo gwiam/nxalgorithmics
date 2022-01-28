@@ -7,26 +7,26 @@ import java.util.UUID;
 /***
  * Represents a generic node in a graph
  */
-public class Node implements Comparable<Node>{
+public class Node<T extends Comparable<T>> implements Comparable<Node<T>>{
     private String nodeName;
     private final UUID nodeId;
-    private Comparable nodeValue;
+    private T nodeValue;
     private Tag objTag;     // tag reference for NXOpen
-    protected Node parent;
+    protected Node<?> parent;
 
-    public Node(Comparable nodeValue){
+    public Node(T nodeValue){
         this.nodeValue = nodeValue;
         this.nodeId = UUID.randomUUID();
     }
 
-    public Node(Comparable value, String name){
+    public Node(T value, String name){
         this.nodeValue = value;
         this.nodeName = name;
         this.nodeId = UUID.randomUUID();
     }
 
     @Override
-    public int compareTo(Node o) {
+    public int compareTo(Node<T> o) {
         return this.nodeValue.compareTo(o.nodeValue);
     }
 
@@ -42,11 +42,17 @@ public class Node implements Comparable<Node>{
         return this.objTag;
     }
 
-    public Node getParent(){
+    public Node<?> getParent(){
         return this.parent;
     }
 
-
+    /**
+     * Gets the value of this node
+     * @return value of the node
+     */
+    public T getNodeValue(){
+        return this.nodeValue;
+    }
     public String getNodeName() {
         return this.nodeName;
     }
