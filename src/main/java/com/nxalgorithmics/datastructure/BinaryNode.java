@@ -1,23 +1,23 @@
 package com.nxalgorithmics.datastructure;
 
-public class BinaryNode extends Node {
+public class BinaryNode<T extends Comparable<T>> extends Node<T> {
 
-    protected BinaryNode leftChild;
-    protected BinaryNode rightChild;
+    protected BinaryNode<?> leftChild;
+    protected BinaryNode<?> rightChild;
     protected boolean isLeaf = false;
 
-    public BinaryNode(Comparable nodeValue) {
+    public BinaryNode(T nodeValue) {
         super(nodeValue);
     }
 
-    public BinaryNode(Comparable value, String name) {
+    public BinaryNode(T value, String name) {
         super(value, name);
     }
     public boolean isLeaf(){
         return this.isLeaf;
     }
 
-    public void addChild(BinaryNode node, byte direction){
+    public void addChild(BinaryNode<T> node, byte direction){
         if (direction == 0) {
             // left
             this.leftChild = node;
