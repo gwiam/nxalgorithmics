@@ -17,7 +17,7 @@ public class BinaryNode<T extends Comparable<T>> extends Node<T> {
         return this.isLeaf;
     }
 
-    public void addChild(BinaryNode<T> node, byte direction){
+    public void addChild(BinaryNode<?> node, byte direction){
         if (direction == 0) {
             // left
             this.leftChild = node;

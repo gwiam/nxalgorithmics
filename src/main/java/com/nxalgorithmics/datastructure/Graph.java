@@ -53,5 +53,9 @@ public abstract class Graph {
      */
     abstract int numberOfNodes();
 
+    /***
+     * Sets the visualization toggle for the object in NX. Set to false for ignoring NX visual component.
+     * @param viz toggle
+     */
     abstract void setVisualization(boolean viz);
 }

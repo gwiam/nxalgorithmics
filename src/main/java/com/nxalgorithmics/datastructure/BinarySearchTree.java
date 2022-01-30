@@ -1,5 +1,6 @@
 package com.nxalgorithmics.datastructure;
 
+import com.nxalgorithmics.visual.TreeVisualization;
 import nxopen.NXException;
 import com.nxalgorithmics.visual.GraphVisualization;
 
@@ -28,7 +29,7 @@ public class BinarySearchTree extends Graph{
         this.turnOnViz = visualize;
         if (visualize){
             try {
-                this.graphViz = new GraphVisualization();
+                this.graphViz = new TreeVisualization();
             }catch (RemoteException | NXException e) {
                 e.printStackTrace();
             }
@@ -54,7 +55,7 @@ public class BinarySearchTree extends Graph{
             this.rootNode = (BinaryNode<?>) rootNode;
             if (this.turnOnViz){
                 try {
-                    this.graphViz = new GraphVisualization();
+                    this.graphViz = new TreeVisualization();
                     this.graphViz.createNode(this.rootNode, this);            // visualize tree root in NX
                 } catch (NXException | RemoteException e) {
                     e.printStackTrace();
@@ -190,24 +191,32 @@ public class BinarySearchTree extends Graph{
      */
     public ArrayList<?> traversePreorder(){
         ArrayList<Comparable<?>> results = new ArrayList<>();
-        BinaryNode<?> currentNode = this.rootNode;
-
-        results.add(currentNode.getNodeValue()); // add root node value
-
-        // get all the left child values
-        while(currentNode.leftChild != null){
-            results.add(currentNode.leftChild.getNodeValue());
-            currentNode = currentNode.leftChild;
-        }
-
-        // get all the right child values
-        currentNode = this.rootNode;
-        while(currentNode.rightChild != null){
-            results.add(currentNode.rightChild.getNodeValue());
-            currentNode = currentNode.rightChild;
-        }
+        traversePreORec(this.rootNode, results);
         return results;
     }
 
+    private void traversePreORec(BinaryNode<?> node, ArrayList<Comparable<?>> list){
+        if (node != null){
+            list.add(node.getNodeValue());
+            traversePreORec(node.leftChild,list);
+            traversePreORec(node.rightChild,list);
+        }
+    }
 
+    /***
+     * Traverses the BST inorder and returns an ordered list of all encountered values
+     * @return List of node values in order LR
+     */
+    public ArrayList<?> traverseInorder(){
+        ArrayList<Comparable<?>> results = new ArrayList<>();
+        traverseInORec(this.rootNode, results);
+        return results;
+    }
+    private void traverseInORec(BinaryNode<?> node, ArrayList<Comparable<?>> list){
+        if (node != null){
+            traversePreORec(node.leftChild,list);
+            list.add(node.getNodeValue());
+            traversePreORec(node.rightChild,list);
+        }
+    }
 }
