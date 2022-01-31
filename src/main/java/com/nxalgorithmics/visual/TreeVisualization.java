@@ -73,8 +73,8 @@ public class TreeVisualization extends GraphVisualization{
                 this.graphFeatures.put(objEdge.tag(),objEdge);
 
                 // put new key into mapping with key being automatically incremented
-                this.featurePnts.get(objSphere.tag()).put("edge" + String.valueOf(
-                        checkOccurrenceOfStringInSet(this.featurePnts.get(objSphere.tag()).keySet(),"edge")),
+                this.featurePnts.get(objSphere.tag()).put("edge" +
+                        checkOccurrenceOfStringInSet(this.featurePnts.get(objSphere.tag()).keySet(),"edge"),
                         objEdge);
                 cbuilder.destroy();
             }

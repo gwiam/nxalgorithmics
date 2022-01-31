@@ -89,7 +89,9 @@ public class BinarySearchTree extends Graph{
         return false;
     }
 
+
     @Override
+    @SuppressWarnings({"unchecked", "raw"})
     public Node<?> addNode(Node<?> node) {
         BinaryNode<?> bnode = (BinaryNode<?>) node;
         BinaryNode<?> potentialNode = null;

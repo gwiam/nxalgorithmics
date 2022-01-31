@@ -6,10 +6,7 @@ import java.rmi.RemoteException;
 import java.util.HashMap;
 
 import com.nxalgorithmics.datastructure.*;
-import nxopen.features.CylinderBuilder;
 import nxopen.features.Feature;
-import nxopen.features.SphereBuilder;
-import nxopen.geometricutilities.BooleanOperation;
 
 /***
  * Visualizing graphing components in NX
